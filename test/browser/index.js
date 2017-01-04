@@ -30,20 +30,12 @@ describe('App', () => {
 			expect(scratch.innerHTML).to.contain('Home');
 		});
 
-		it('should render /profile', () => {
+		it('should render /settings', () => {
 			render(<App />, scratch);
-			route('/profile');
+			route('/settings');
 			rerender();
 
-			expect(scratch.innerHTML).to.contain('Profile: me');
-		});
-
-		it('should render /profile/:user', () => {
-			render(<App />, scratch);
-			route('/profile/john');
-			rerender();
-
-			expect(scratch.innerHTML).to.contain('Profile: john');
+			expect(scratch.innerHTML).to.contain('Settings');
 		});
 	});
 });
