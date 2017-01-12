@@ -5,6 +5,8 @@ import Header from './header';
 import Home from './home';
 import Settings from './settings';
 
+const API_ORIGIN = 'https://127.0.0.1';
+
 export default class App extends Component {
 	/** Gets fired when the route changes.
 	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
@@ -19,7 +21,7 @@ export default class App extends Component {
 			<div id="app">
 				<Header />
 				<Router onChange={this.handleRoute}>
-					<Home path="/" />
+                    <Home api={API_ORIGIN} path="/" />
 					<Settings path="/settings/" />
 				</Router>
 			</div>
