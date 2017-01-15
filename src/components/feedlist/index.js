@@ -42,7 +42,7 @@ export default class Feedlist extends Component {
 
     // Renders a single row
     renderRow(entry) {
-        return <Feedentry link={entry.link} title={entry.title} description={entry.description} />;
+        return <Feedentry entry={entry} />;
     }
 
     render() {
