@@ -5,7 +5,7 @@ import Header from './header';
 import Home from './home';
 import Settings from './settings';
 
-const API_ORIGIN = 'https://127.0.0.1';
+const API_ORIGIN = 'http://127.0.0.1';
 
 export default class App extends Component {
 	/** Gets fired when the route changes.
