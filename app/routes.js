@@ -47,6 +47,26 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/settings',
+      name: 'settingsPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/SettingsPage/reducer'),
+          import('containers/SettingsPage/sagas'),
+          import('containers/SettingsPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('settingsPage', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

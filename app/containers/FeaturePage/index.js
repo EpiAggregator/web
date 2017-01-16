@@ -7,6 +7,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
+import RaisedButton from 'material-ui/RaisedButton';
+
 import H1 from 'components/H1';
 import messages from './messages';
 import List from './List';
@@ -33,6 +35,7 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
         <H1>
           <FormattedMessage {...messages.header} />
         </H1>
+        <RaisedButton label="Default" />
         <List>
           <ListItem>
             <ListItemTitle>
