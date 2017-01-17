@@ -1,29 +1,26 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import {Tabs, Tab} from 'material-ui/Tabs';
+import FontIcon from 'material-ui/FontIcon';
 
-import NavBar from './NavBar';
-import HeaderLink from './HeaderLink';
 import messages from './messages';
 
-class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    return (
-      <div>
-        <NavBar>
-          <HeaderLink to="/">
-            <FormattedMessage {...messages.home} />
-          </HeaderLink>
-          <HeaderLink to="/features">
-            <FormattedMessage {...messages.features} />
-          </HeaderLink>
-          <HeaderLink to="/settings">
-            <FormattedMessage {...messages.settings} />
-          </HeaderLink>
-        </NavBar>
-      </div>
-    );
-  }
-}
+const Header = () => (
+    <Tabs>
+    <Tab
+    icon={<FontIcon className="muidocs-icon-action-home" />}
+    label={<FormattedMessage {...messages.home} />}
+    />
+    <Tab
+    icon={<FontIcon className="material-icons">settings</FontIcon>}
+    label={<FormattedMessage {...messages.settings} />}
+    />
+    <Tab
+    icon={<FontIcon className="material-icons">favorite</FontIcon>}
+    label={<FormattedMessage {...messages.about} />}
+    />
+    </Tabs>
+);
 
 export default Header;

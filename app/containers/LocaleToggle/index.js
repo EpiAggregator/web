@@ -20,7 +20,11 @@ export class LocaleToggle extends React.PureComponent { // eslint-disable-line r
   render() {
     return (
       <Wrapper>
-        <Toggle value={this.props.locale} values={appLocales} messages={messages} onToggle={this.props.onLocaleToggle} />
+      <Toggle
+        label={<FormattedMessage {...messages.chooselanguage} />} value={this.props.locale} values={appLocales}
+        messages={messages}
+        onToggle={this.props.onLocaleToggle}
+      />
       </Wrapper>
     );
   }

@@ -21,8 +21,9 @@ import 'sanitize.css/sanitize.css';
 // Material-UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-// import injectTapEventPlugin from 'react-tap-event-plugin';
-// injectTapEventPlugin();
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 // Import root app
 import App from 'containers/App';
