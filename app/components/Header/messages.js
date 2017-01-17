@@ -7,15 +7,15 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   home: {
-    id: 'boilerplate.components.Header.home',
+    id: 'epiaggregator.components.Header.home',
     defaultMessage: 'Home',
   },
-  features: {
-    id: 'boilerplate.components.Header.features',
-    defaultMessage: 'Features',
+  about: {
+    id: 'epiaggregator.components.Header.about',
+    defaultMessage: 'About',
   },
   settings: {
-    id: 'boilerplate.components.Header.settings',
+    id: 'epiaggregator.components.Header.settings',
     defaultMessage: 'Settings',
   },
 });

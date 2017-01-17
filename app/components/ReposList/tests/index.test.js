@@ -32,10 +32,10 @@ describe('<ReposList />', () => {
       owner: {
         login: 'mxstbr',
       },
-      html_url: 'https://github.com/mxstbr/react-boilerplate',
-      name: 'react-boilerplate',
+      html_url: 'https://github.com/mxstbr/react-epiaggregator',
+      name: 'react-epiaggregator',
       open_issues_count: 20,
-      full_name: 'mxstbr/react-boilerplate',
+      full_name: 'mxstbr/react-epiaggregator',
     }];
     const renderedComponent = shallow(
       <ReposList

@@ -6,12 +6,20 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
+  chooselanguage: {
+    id: 'epiaggregator.containers.LocaleToggle.chooselanguage',
+    defaultMessage: 'Choose language',
+  },
   en: {
-    id: 'boilerplate.containers.LocaleToggle.en',
+    id: 'epiaggregator.containers.LocaleToggle.en',
     defaultMessage: 'en',
   },
   de: {
-    id: 'boilerplate.containers.LocaleToggle.de',
+    id: 'epiaggregator.containers.LocaleToggle.de',
     defaultMessage: 'de',
+  },
+  fr: {
+    id: 'epiaggregator.containers.LocaleToggle.fr',
+    defaultMessage: 'fr',
   },
 });
