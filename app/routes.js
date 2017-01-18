@@ -39,14 +39,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/features',
-      name: 'features',
-      getComponent(nextState, cb) {
-        import('containers/FeaturePage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    }, {
       path: '/settings',
       name: 'settingsPage',
       getComponent(nextState, cb) {
@@ -60,6 +52,26 @@ export default function createRoutes(store) {
 
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('settingsPage', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/about',
+      name: 'aboutPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/AboutPage/reducer'),
+          import('containers/AboutPage/sagas'),
+          import('containers/AboutPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('aboutPage', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });

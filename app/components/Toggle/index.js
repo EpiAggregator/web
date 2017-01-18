@@ -18,7 +18,6 @@ class SelectFieldWrapper extends React.Component{
         }
     }
     render() {
-        console.log(this.props);
         return (
             <SelectField {...this.props} onChange={this.onChange.bind(this)}>
             {this.props.children}
