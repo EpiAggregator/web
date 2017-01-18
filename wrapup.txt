@@ -1,0 +1,4 @@
+https://github.com/react-boilerplate/react-boilerplate/blob/master/docs/testing
+https://github.com/react-boilerplate/react-boilerplate/blob/master/docs/js/i18n.md
+
+npm build
