@@ -2,30 +2,18 @@ import { fromJS } from 'immutable';
 
 import {
   selectHome,
-  makeSelectUsername,
+  makeSelectFeedsError,
 } from '../selectors';
 
-describe('selectHome', () => {
-  it('should select the home state', () => {
-    const homeState = fromJS({
-      userData: {},
-    });
-    const mockedState = fromJS({
-      home: homeState,
-    });
-    expect(selectHome(mockedState)).toEqual(homeState);
-  });
-});
-
-describe('makeSelectUsername', () => {
-  const usernameSelector = makeSelectUsername();
-  it('should select the username', () => {
-    const username = 'mxstbr';
+describe('makeSelectFeedsError', () => {
+    const feedSelector = makeSelectFeedsError();
+  it('should select the feed status', () => {
+    const feedsError = false;
     const mockedState = fromJS({
       home: {
-        username,
+        feedsError,
       },
     });
-    expect(usernameSelector(mockedState)).toEqual(username);
+    expect(feedSelector(mockedState)).toEqual(username);
   });
 });

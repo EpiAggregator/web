@@ -8,9 +8,15 @@ import {
 describe('homeReducer', () => {
   let state;
   beforeEach(() => {
-    state = fromJS({
-      username: '',
-    });
+      state = fromJS({
+          feedsLoading: true,
+          feedsError: false,
+          feedsList: [],
+          entriesLoading: true,
+          entriesError: false,
+          entriesList: [],
+          unReadOnly: false,
+      });
   });
 
   it('should return the initial state', () => {
@@ -18,10 +24,4 @@ describe('homeReducer', () => {
     expect(homeReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the changeUsername action correctly', () => {
-    const fixture = 'mxstbr';
-    const expectedResult = state.set('username', fixture);
-
-    expect(homeReducer(state, changeUsername(fixture))).toEqual(expectedResult);
-  });
 });

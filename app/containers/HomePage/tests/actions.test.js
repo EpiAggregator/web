@@ -3,19 +3,19 @@ import {
 } from '../constants';
 
 import {
-  changeUsername,
+    feedsLoadingError,
 } from '../actions';
 
 describe('Home Actions', () => {
-  describe('changeUsername', () => {
-    it('should return the correct type and the passed name', () => {
-      const fixture = 'Max';
+    describe('feedsLoading', () => {
+    it('should return the correct type and the values', () => {
+      const fixture = true;
       const expectedResult = {
-        type: CHANGE_USERNAME,
+        type: LOAD_FEEDSENTRIES_ERROR,
         name: fixture,
       };
 
-      expect(changeUsername(fixture)).toEqual(expectedResult);
+      expect(feedsLoadingError(fixture)).toEqual(expectedResult);
     });
   });
 });
