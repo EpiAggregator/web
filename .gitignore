@@ -1,6 +1,7 @@
-/node_modules
-/npm-debug.log
-/build
-/*.kdev4
-.DS_Store
-/coverage
+.DS_STORE
+*.log
+
+node_modules
+
+dist
+coverage
