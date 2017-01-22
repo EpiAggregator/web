@@ -12,24 +12,37 @@
 import { fromJS } from 'immutable';
 
 import {
-  CHANGE_USERNAME,
+    LOAD_FEEDSLIST_SUCCESS,
+    LOAD_FEEDSLIST,
+    LOAD_FEEDSLIST_ERROR,
 } from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
-  username: '',
+    loading: false,
+    error: false,
+    feedsList: [],
 });
 
 function homeReducer(state = initialState, action) {
-  switch (action.type) {
-    case CHANGE_USERNAME:
-
-      // Delete prefixed '@' from the github username
-      return state
-        .set('username', action.name.replace(/@/gi, ''));
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case LOAD_FEEDSLIST:
+            return state
+            .set('loading', true)
+            .set('error', false)
+            .setIn(['feedsList'], []);
+        case LOAD_FEEDSLIST_SUCCESS:
+            return state
+            .setIn(['feedsList'], action.feeds)
+            .set('loading', false);
+        case LOAD_FEEDSLIST_ERROR:
+            return state
+            .set('error', action.error)
+            .set('loading', false);
+        default:
+            return state
+            .setIn(['feedsList'], []); // Trick to have an array instead of a List
+    }
 }
 
 export default homeReducer;

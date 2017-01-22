@@ -1,11 +1,11 @@
 import { getAsyncInjectors } from './utils/asyncInjectors';
 
-import { changeTab } from './containers/TabsPageChooser/sagas';
+import { defaultSagas } from './containers/App/sagas';
 
 export function injectGlobalSagas(store) {
     const { injectSagas } = getAsyncInjectors(store);
 
     injectSagas([
-        changeTab,
+        defaultSagas,
     ]);
 };

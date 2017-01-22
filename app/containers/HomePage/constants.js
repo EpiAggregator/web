@@ -9,4 +9,6 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const CHANGE_USERNAME = 'epiaggregator/Home/CHANGE_USERNAME';
+export const LOAD_FEEDSLIST = 'epiaggregator/HomePage/LOAD_FEEDSLIST';
+export const LOAD_FEEDSLIST_SUCCESS = 'epiaggregator/HomePage/LOAD_FEEDSLIST_SUCCESS';
+export const LOAD_FEEDSLIST_ERROR = 'epiaggregator/HomePage/LOAD_FEEDSLIST_ERROR';

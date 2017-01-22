@@ -9,14 +9,26 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import { makeSelectFeedsList, makeSelectLoading, makeSelectError } from './selectors';
+import { loadFeedsList } from './actions';
+
+import FeedsList from 'components/FeedsList';
+
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
    */
   componentDidMount() {
+    this.props.onMount();
   }
 
   render() {
+    const { loading, error, feedsList } = this.props;
+    const feedsListProps = {
+        loading,
+        error,
+        feedsList,
+    };
     return (
       <article>
         <Helmet
@@ -26,6 +38,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           ]}
         />
         <div>
+        <FeedsList {...feedsListProps} />
         </div>
       </article>
     );
@@ -33,13 +46,19 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 }
 
 HomePage.propTypes = {
+    onMount: React.PropTypes.func.isRequired,
 };
 
-export function mapDispatchToProps(/* dispatch */) {
-  return {};
+export function mapDispatchToProps(dispatch) {
+  return {
+      onMount: (evt) => dispatch(loadFeedsList()),
+    };
 }
 
 const mapStateToProps = createStructuredSelector({
+    feedsList: makeSelectFeedsList(),
+    loading: makeSelectLoading(),
+    error: makeSelectError(),
 });
 
 // Wrap the component to inject dispatch and state into it

@@ -6,12 +6,24 @@ import { createSelector } from 'reselect';
 
 const selectHome = (state) => state.get('home');
 
-const makeSelectUsername = () => createSelector(
-  selectHome,
-  (homeState) => homeState.get('username')
+const makeSelectLoading = () => createSelector(
+    selectHome,
+    (homeState) => homeState.get('loading')
+);
+
+const makeSelectError = () => createSelector(
+    selectHome,
+    (homeState) => homeState.get('error')
+);
+
+const makeSelectFeedsList = () => createSelector(
+    selectHome,
+    (homeState) => homeState.getIn(['feedsList'])
 );
 
 export {
   selectHome,
-  makeSelectUsername,
+  makeSelectLoading,
+  makeSelectError,
+  makeSelectFeedsList,
 };

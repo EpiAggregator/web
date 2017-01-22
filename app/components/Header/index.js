@@ -3,10 +3,10 @@ import { FormattedMessage } from 'react-intl';
 
 import messages from './messages';
 
-import TabsPageChooser from 'containers/TabsPageChooser'
+import TabsChooser from 'containers/TabsChooser'
 
 const Header = () => (
-    <TabsPageChooser />
+    <TabsChooser />
 );
 
 export default Header;

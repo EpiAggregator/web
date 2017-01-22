@@ -16,19 +16,47 @@
  */
 
 import {
-  CHANGE_USERNAME,
+    LOAD_FEEDSLIST,
+    LOAD_FEEDSLIST_SUCCESS,
+    LOAD_FEEDSLIST_ERROR,
 } from './constants';
 
 /**
- * Changes the input field of the form
+ * Load the feedlist, this action starts the request saga
  *
- * @param  {name} name The new text of the input field
- *
- * @return {object}    An action object with a type of CHANGE_USERNAME
+ * @return {object} An action object with a type of LOAD_FEEDSLIST
  */
-export function changeUsername(name) {
-  return {
-    type: CHANGE_USERNAME,
-    name,
-  };
+export function loadFeedsList() {
+    return {
+        type: LOAD_FEEDSLIST,
+    };
+}
+
+/**
+ * Dispatched when the feedlist are loaded by the request saga
+ *
+ * @param  {array} feeds The feeds data
+ * @param  {string} username The current username
+ *
+ * @return {object}      An action object with a type of LOAD_FEEDSLIST_SUCCESS passing the repos
+ */
+export function feedsLoaded(feeds) {
+    return {
+        type: LOAD_FEEDSLIST_SUCCESS,
+        feeds,
+    };
+}
+
+/**
+ * Dispatched when loading the repositories fails
+ *
+ * @param  {object} error The error
+ *
+ * @return {object}       An action object with a type of LOAD_FEEDSLIST_ERROR passing the error
+ */
+export function feedsLoadingError(error) {
+    return {
+        type: LOAD_FEEDSLIST_ERROR,
+        error,
+    };
 }

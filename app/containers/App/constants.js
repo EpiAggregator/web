@@ -9,7 +9,6 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_REPOS = 'epiaggregator/App/LOAD_REPOS';
-export const LOAD_REPOS_SUCCESS = 'epiaggregator/App/LOAD_REPOS_SUCCESS';
-export const LOAD_REPOS_ERROR = 'epiaggregator/App/LOAD_REPOS_ERROR';
+export const CHANGE_TAB = 'app/App/CHANGE_TAB';
+export const TABCHANGE_LOCATION = 'app/App/TABCHANGE_LOCATION';
 export const DEFAULT_LOCALE = 'en';
