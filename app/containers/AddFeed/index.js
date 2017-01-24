@@ -39,12 +39,13 @@ class AddFeed extends React.Component { // eslint-disable-line react/prefer-stat
     return (
       <form>
       <div>
-        <Field name="url"
-            component={TextField}
-            validate={[ required, validUrl ]}
+        <Field component={TextField} name="url"
+            validate={[ validUrl ]}
+            format={ (s) => s }
             floatingLabelText={<FormattedMessage {...messages.addFeed} />}
             hintText={<FormattedMessage {...messages.addFeed} />} />
-            <RaisedButton label={<FormattedMessage {...messages.submit} />} primary />
+            <RaisedButton label={<FormattedMessage {...messages.submit} />} primary
+        />
       </div>
       </form>
     );
@@ -65,7 +66,6 @@ const mapStateToProps = createStructuredSelector({
 
 const form = reduxForm({
     form: 'addFeed',
-//     getFormState: (state, reduxMountPoint) => state.get(reduxMountPoint).toJS(),
 });
 
 // Wrap the component to inject dispatch and state into it

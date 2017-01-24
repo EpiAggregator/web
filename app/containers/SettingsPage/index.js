@@ -12,21 +12,16 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectSettingsPage from './selectors';
 import messages from './messages';
 
-import styled from 'styled-components';
+import CenterDiv from 'components/CenterDiv';
 
 import LocaleToggle from 'containers/LocaleToggle';
-
-const Center = styled.div`
-width: 50%;
-margin: 0 auto;
-`;
 
 export class SettingsPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Center>
+      <CenterDiv>
         <LocaleToggle />
-      </Center>
+      </CenterDiv>
     );
   }
 }

@@ -12,16 +12,10 @@ import { createStructuredSelector } from 'reselect';
 import { makeSelectFeedsList, makeSelectLoading, makeSelectError } from './selectors';
 import { loadFeedsList } from './actions';
 
-import styled from 'styled-components';
-
+import CenterDiv from 'components/CenterDiv';
 import FeedsList from 'components/FeedsList';
 
 import AddFeed from 'containers/AddFeed';
-
-const Center = styled.div`
-width: 50%;
-margin: 0 auto;
-`;
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
@@ -47,9 +41,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           ]}
         />
         <div>
-        <Center>
+        <CenterDiv>
           <AddFeed />
-        </Center>
+        </CenterDiv>
         <FeedsList {...feedsListProps} />
         </div>
       </article>
