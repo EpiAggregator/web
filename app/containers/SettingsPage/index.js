@@ -12,18 +12,21 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectSettingsPage from './selectors';
 import messages from './messages';
 
+import styled from 'styled-components';
+
+import LocaleToggle from 'containers/LocaleToggle';
+
+const Center = styled.div`
+width: 50%;
+margin: 0 auto;
+`;
+
 export class SettingsPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
-        <Helmet
-          title="SettingsPage"
-          meta={[
-            { name: 'description', content: 'Description of SettingsPage' },
-          ]}
-        />
-        <FormattedMessage {...messages.header} />
-      </div>
+      <Center>
+        <LocaleToggle />
+      </Center>
     );
   }
 }

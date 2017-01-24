@@ -6,8 +6,12 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.containers.AboutPage.header',
-    defaultMessage: 'This is AboutPage container !',
+  info: {
+    id: 'app.containers.AboutPage.info',
+    defaultMessage: 'This is the EpiAggregator team',
+  },
+  github: {
+    id: 'app.containers.AboutPage.github',
+    defaultMessage: 'EpiAggregator on Github',
   },
 });

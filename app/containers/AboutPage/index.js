@@ -5,41 +5,59 @@
  */
 
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { createStructuredSelector } from 'reselect';
-import makeSelectAboutPage from './selectors';
 import messages from './messages';
+
+import styled from 'styled-components';
+
+import Avatar from 'material-ui/Avatar';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const StyledDiv = styled.div`
+paddingTop: 16;
+marginBottom: 12;
+text-align: center;
+`;
 
 export class AboutPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    let imgStyle = { margin: '30px' };
     return (
-      <div>
-        <Helmet
-          title="AboutPage"
-          meta={[
-            { name: 'description', content: 'Description of AboutPage' },
-          ]}
-        />
-        <FormattedMessage {...messages.header} />
-      </div>
+      <StyledDiv>
+        <h2>
+            <FormattedMessage {...messages.info} />
+        </h2>
+          <Avatar
+            src="https://cdn.local.epitech.eu/userprofil/profilview/guillaume.fillon.jpg"
+            size={220}
+            style={imgStyle}
+          />
+          <Avatar
+            src="https://cdn.local.epitech.eu/userprofil/profilview/adrien.dellamaggiora.jpg"
+            size={220}
+            style={imgStyle}
+          />
+          <Avatar
+            src="https://cdn.local.epitech.eu/userprofil/profilview/etienne.debas.jpg"
+            size={220}
+            style={imgStyle}
+          />
+          <Avatar
+            src="https://cdn.local.epitech.eu/userprofil/profilview/hugues.morisset.jpg"
+            size={220}
+            style={imgStyle}
+          />
+          <a href="https://github.com/EpiAggregator">
+            <h2>
+              <RaisedButton label={<FormattedMessage {...messages.github} />} />
+            </h2>
+          </a>
+      </StyledDiv>
     );
   }
 }
 
 AboutPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  AboutPage: makeSelectAboutPage(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AboutPage);
+export default AboutPage;
