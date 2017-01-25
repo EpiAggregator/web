@@ -5,8 +5,8 @@
 import { API_R_FEEDS } from '../../api';
 
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
-import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOAD_FEEDSLIST } from './constants';
+import { ADD_FEED_SUCCESS } from 'containers/AddFeed/constants';
 import { feedsLoaded, feedsLoadingError } from './actions';
 
 import request from 'utils/request';
@@ -31,6 +31,7 @@ export function* feedsList() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   const watcher = yield takeLatest(LOAD_FEEDSLIST, getFeedsList);
+  const watcher2 = yield takeLatest(ADD_FEED_SUCCESS, getFeedsList);
 
 }
 

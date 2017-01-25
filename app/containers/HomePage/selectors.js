@@ -6,14 +6,14 @@ import { createSelector } from 'reselect';
 
 const selectHome = (state) => state.get('home');
 
-const makeSelectLoading = () => createSelector(
+const makeSelectFeedsLoading = () => createSelector(
     selectHome,
-    (homeState) => homeState.get('loading')
+    (homeState) => homeState.get('feedsLoading')
 );
 
-const makeSelectError = () => createSelector(
+const makeSelectFeedsError = () => createSelector(
     selectHome,
-    (homeState) => homeState.get('error')
+    (homeState) => homeState.get('feedsError')
 );
 
 const makeSelectFeedsList = () => createSelector(
@@ -23,7 +23,7 @@ const makeSelectFeedsList = () => createSelector(
 
 export {
   selectHome,
-  makeSelectLoading,
-  makeSelectError,
+  makeSelectFeedsLoading,
+  makeSelectFeedsError,
   makeSelectFeedsList,
 };

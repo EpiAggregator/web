@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectFeedsList, makeSelectLoading, makeSelectError } from './selectors';
+import { makeSelectFeedsList, makeSelectFeedsLoading, makeSelectFeedsError } from './selectors';
 import { loadFeedsList } from './actions';
 
 import CenterDiv from 'components/CenterDiv';
@@ -26,11 +26,11 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 
   render() {
-    const { loading, error, feedsList } = this.props;
+    const { feedsLoading, feedsError, feedsList } = this.props;
     const feedsListProps = {
-        loading,
-        error,
-        feedsList,
+        loading: feedsLoading,
+        error: feedsError,
+        feedsList: feedsList,
     };
     return (
       <article>
@@ -63,8 +63,8 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
     feedsList: makeSelectFeedsList(),
-    loading: makeSelectLoading(),
-    error: makeSelectError(),
+    feedsLoading: makeSelectFeedsLoading(),
+    feedsError: makeSelectFeedsError(),
 });
 
 // Wrap the component to inject dispatch and state into it

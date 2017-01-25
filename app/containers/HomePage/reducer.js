@@ -19,8 +19,8 @@ import {
 
 // The initial state of the App
 const initialState = fromJS({
-    loading: false,
-    error: false,
+    feedsLoading: false,
+    feedsError: false,
     feedsList: [],
 });
 
@@ -28,17 +28,17 @@ function homeReducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_FEEDSLIST:
             return state
-            .set('loading', true)
-            .set('error', false)
+            .set('feedsLoading', true)
+            .set('feedsError', false)
             .setIn(['feedsList'], []);
         case LOAD_FEEDSLIST_SUCCESS:
             return state
             .setIn(['feedsList'], action.feeds)
-            .set('loading', false);
+            .set('feedsLoading', false);
         case LOAD_FEEDSLIST_ERROR:
             return state
-            .set('error', action.error)
-            .set('loading', false);
+            .set('feedsError', action.error)
+            .set('feedsLoading', false);
         default:
             return state
             .setIn(['feedsList'], []); // Trick to have an array instead of a List
