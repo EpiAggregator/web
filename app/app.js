@@ -52,6 +52,9 @@ import './global-styles';
 // Import routes
 import createRoutes from './routes';
 
+//Import Global sagas
+import { injectGlobalSagas } from './sagas';
+
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
@@ -76,6 +79,11 @@ const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: makeSelectLocationState(),
 });
+
+
+// https://github.com/react-boilerplate/react-boilerplate/issues/537#issuecomment-274056491
+//Inject global sagas
+injectGlobalSagas(store);
 
 // Set up the router, wrapping all Routes in the App component
 const rootRoute = {

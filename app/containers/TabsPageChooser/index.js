@@ -6,6 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { changeTab } from './actions';
@@ -26,19 +27,16 @@ export class TabsPageChooser extends React.Component { // eslint-disable-line re
 
   render() {
     return (
-        <Tabs value={this.props.tab} >
+        <Tabs initialSelectedIndex={this.props.tab.tabIdx} >
           <Tab
-            value={0}
             icon={<FontIcon className="material-icons">home</FontIcon>}
             label={<FormattedMessage {...messages.home} />}
             onActive={this.handleHome} />
           <Tab
-            value={1}
             icon={<FontIcon className="material-icons">settings</FontIcon>}
             label={<FormattedMessage {...messages.settings} />}
             onActive={this.handleSettings} />
           <Tab
-            value={2}
             icon={<FontIcon className="material-icons">favorite</FontIcon>}
             label={<FormattedMessage {...messages.about} />}
             onActive={this.handleAbout} />
@@ -55,9 +53,12 @@ const mapStateToProps = createStructuredSelector({
     tab: makeSelectTab(),
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onChangeTab: (tabId, url) => dispatch(changeTab(tabId, url)),
+    onChangeTab: (tabId, url) => {
+        dispatch(push(url));
+        dispatch(changeTab(tabId, url));
+    },
   };
 }
 

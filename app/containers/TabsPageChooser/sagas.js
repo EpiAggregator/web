@@ -9,13 +9,12 @@ import { CHANGE_TAB } from 'containers/TabsPageChooser/constants';
 
 // Individual exports for testing
 export function* changeTab() {
-  const watcher = yield take(CHANGE_TAB);
-  const tab = yield select(makeSelectTab());
-  console.log('yo');
-  console.log(tab);
+//   const watcher = yield take(CHANGE_TAB);
+//   const tab = yield select(makeSelectTab());
+  console.log('Hello');
 //   store.dispatch(push(tab));
 
-  yield cancel(watcher);
+//   yield cancel(watcher);
 }
 
 // All sagas to be loaded

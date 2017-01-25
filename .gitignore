@@ -7,4 +7,6 @@ stats.json
 # Cruft
 .DS_Store
 npm-debug.log
-.idea
+.ide/a
+*.kdev4
+

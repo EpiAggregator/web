@@ -11,7 +11,7 @@ const selectTabsPageChooserDomain = () => (state) => state.get('tab');
 
 const makeSelectTab = () => createSelector(
     selectTabsPageChooserDomain,
-    (tabState) => tabState.get('tab')
+    (tabState) => tabState.get('tabIdx')
 );
 
 

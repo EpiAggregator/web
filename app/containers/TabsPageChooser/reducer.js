@@ -10,13 +10,13 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-    tab: 0,
+    tabIdx: 0,
 });
 
 function tabsPageChooserReducer(state = initialState, action) {
   switch (action.type) {
       case CHANGE_TAB:
-      return state.set('tab', action.tab);
+      return state.set('tabIdx', action.tab);
     default:
       return state;
   }
