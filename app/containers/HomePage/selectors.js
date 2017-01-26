@@ -18,7 +18,7 @@ const makeSelectFeedsError = () => createSelector(
 
 const makeSelectFeedsList = () => createSelector(
     selectHome,
-    (homeState) => homeState.getIn(['feedsList'])
+    (homeState) =>  homeState.getIn(['feedsList']).toJS()
 );
 
 export {

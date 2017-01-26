@@ -22,7 +22,6 @@ import {
 // The initial state of the App
 const initialState = fromJS({
     tabLocation: window.location.pathname, // Initial location from uri
-    token: JSON.parse(localStorage.getItem('token')) || {},
 });
 
 function appReducer(state = initialState, action) {
@@ -34,10 +33,10 @@ function appReducer(state = initialState, action) {
     case LOGIN_SUCCESS:
         let tok = action.token;
         localStorage.setItem('token', JSON.stringify(tok));
-        return state.set('token', fromJS({ token: tok }));
+        return state;
     case LOGOUT:
         localStorage.setItem('token', JSON.stringify({}));
-        return state.set('token', fromJS({ token: {} }));
+        return state;
     default:
       return state;
   }

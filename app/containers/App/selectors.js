@@ -29,7 +29,7 @@ const makeSelectTabsChooser = () => createSelector(
 
 const makeSelectToken = () => createSelector(
     selectGlobal,
-    (globalState) => globalState.getIn(['token'])
+    (globalState) => { return JSON.parse(localStorage.getItem('token')); }
 );
 
 export {

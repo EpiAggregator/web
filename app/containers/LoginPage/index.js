@@ -10,7 +10,7 @@ import { createStructuredSelector } from 'reselect';
 import Helmet from 'react-helmet';
 import LoginForm from './LoginForm'
 
-import { login } from 'containers/App/actions';
+import { login, register } from 'containers/App/actions';
 
 import CenterDiv from 'components/CenterDiv';
 
@@ -25,7 +25,7 @@ export class LoginPage extends React.PureComponent { // eslint-disable-line reac
               { name: 'description', content: 'Login Page' },
             ]}
           />
-          <LoginForm onSubmit={this.props.onLogin} locale={this.props.locale} />
+          <LoginForm onLogin={this.props.onLogin} onRegister={this.props.onRegister} locale={this.props.locale} />
       </CenterDiv>
       </section>
     );
@@ -36,6 +36,7 @@ export class LoginPage extends React.PureComponent { // eslint-disable-line reac
 function mapDispatchToProps(dispatch) {
   return {
     onLogin: (data) => dispatch(login(data)),
+    onRegister: (data) => dispatch(register(data)),
   };
 }
 

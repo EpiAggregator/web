@@ -2,29 +2,38 @@
  * Requests
  */
 
-import { API_R_ADDFEED } from '../../api';
+import { API_R_FEEDS } from '../../api';
 
-import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { take, call, put, select, cancel, takeLatest, fork } from 'redux-saga/effects';
 import { ADD_FEED } from './constants';
 import { addFeedSucces, addFeedError } from './actions';
+
+import { makeSelectToken } from 'containers/App/selectors';
 
 import request from 'utils/request';
 // import { makeSelectUsername } from 'containers/HomePage/selectors';
 
-export function* putAddList(evt) {
+function* updateFeedlist() {
+    yield call(delay, 5000);
+    yield put(addFeedSucces());
+}
+
+export function* putAddList(action) {
+    const token = yield select(makeSelectToken());
     try {
         // Call our request helper (see 'utils/request')
-        const feed = yield call(request, API_R_ADDFEED, {
+        const feed = yield call(request, API_R_FEEDS, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': token.type + " " + token.token,
             },
-            body: JSON.stringify({
-                url: evt.url,
-            })
+            body: JSON.stringify([
+                action.feedUrl.get('url'),
+            ])
         });
-        console.log(feed);
-        yield put(addFeedSucces());
+        yield fork(updateFeedlist);
     } catch (err) {
         yield put(addFeedError(err));
     }

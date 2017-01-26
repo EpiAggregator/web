@@ -30,10 +30,10 @@ function homeReducer(state = initialState, action) {
             return state
             .set('feedsLoading', true)
             .set('feedsError', false)
-            .setIn(['feedsList'], []);
+            .setIn(['feedsList'], fromJS( [] ));
         case LOAD_FEEDSLIST_SUCCESS:
             return state
-            .setIn(['feedsList'], action.feeds)
+            .setIn(['feedsList'], fromJS( action.feeds))
             .set('feedsLoading', false);
         case LOAD_FEEDSLIST_ERROR:
             return state

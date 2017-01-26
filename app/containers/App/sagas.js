@@ -1,13 +1,13 @@
 import { take, call, put, select, takeLatest, takeEvery, cancel } from 'redux-saga/effects';
 
 import { push } from 'react-router-redux';
-import { changeLocation, login, loginSuccess, loginError } from './actions';
+import { changeLocation, loginSuccess, loginError, registerSuccess, registerError } from './actions';
 import { makeSelectTabsChooser } from './selectors';
 
-import { CHANGE_TAB, LOGOUT, LOGIN, LOGIN_SUCCESS } from './constants';
+import { CHANGE_TAB, LOGOUT, LOGIN, LOGIN_SUCCESS, REGISTER, REGISTER_SUCCESS } from './constants';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
-import { API_R_TOKEN } from '../../api';
+import { API_R_TOKEN, API_R_USER } from '../../api';
 import request from 'utils/request';
 
 function* updateLocation(action) {
@@ -38,12 +38,32 @@ function* initiateLogin(action) {
 
 }
 
+function* initiateRegister(action) {
+    try {
+        const token = yield call(request, API_R_USER, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: action.data.get('email'),
+                password: action.data.get('password'),
+            })
+        });
+        yield put(registerSuccess());
+    } catch (err) {
+        yield put(registerError(err));
+    }
+
+}
+
 function* loggedIn(action) {
     const url = yield put(push("/")); // GO home
 }
 
 function* loggedOut(action) {
     const url = yield put(push("/login")); // GO login //doesn't work
+    window.location.reload();
 }
 
 // Individual exports for testing
@@ -53,6 +73,7 @@ export function* defaultSagas() {
     const watcher3 = yield takeLatest(LOGOUT, loggedOut);
     const watcher4 = yield takeLatest(LOGIN, initiateLogin);
     const watcher5 = yield takeLatest(LOGIN_SUCCESS, loggedIn);
+    const watcher6 = yield takeLatest(REGISTER, initiateRegister);
 }
 
 // All sagas to be loaded

@@ -7,9 +7,18 @@ import { TextField } from 'redux-form-material-ui'
 import RaisedButton from 'material-ui/RaisedButton'
 
 const LoginForm = (props) => {
-  const { error, handleSubmit, submitting } = props
+  const { error, onRegister, onLogin, handleSubmit, submitting } = props
+  this.clicked = '';
+
+  let formRouter = (action) => {
+    if (this.clicked === 'register')
+        onRegister(action);
+    else if (this.clicked === 'login')
+        onLogin(action);
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+      <form style={{width: '260px'}} onSubmit={handleSubmit(formRouter)}>
       <div>
         <Field name="email" type="email" component={TextField} floatingLabelText={<FormattedMessage {...messages.email} />} />
       </div>
@@ -22,8 +31,8 @@ const LoginForm = (props) => {
       {error && <strong>{error}</strong>}
 
       <div>
-      <RaisedButton style={{float: 'left'}} type="button" disabled={submitting} ><FormattedMessage {...messages.register} /></RaisedButton>
-      <RaisedButton type="submit" disabled={submitting}><FormattedMessage {...messages.login} /></RaisedButton>
+      <RaisedButton style={{float: 'left'}} type="submit" onClick={() => this.clicked='register'} disabled={submitting}><FormattedMessage {...messages.register} /></RaisedButton>
+      <RaisedButton style={{float: 'right'}} type="submit" onClick={() => this.clicked='login'} disabled={submitting}><FormattedMessage {...messages.login} /></RaisedButton>
       </div>
     </form>
   )

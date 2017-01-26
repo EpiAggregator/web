@@ -1,6 +1,9 @@
+import { makeSelectToken } from 'containers/App/selectors';
 
 function isToken(store) {
-    if (store.getState().get('global').getIn(['token'])  && store.getState().get('global').getIn(['token']).getIn(['token']))
+    const state = store.getState().get('global');
+    let token = makeSelectToken()(state);
+    if (token.token)
         return true;
     return false;
 }

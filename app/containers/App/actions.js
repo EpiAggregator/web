@@ -15,7 +15,7 @@
  *    }
  */
 
-import { CHANGE_TAB, TABCHANGE_LOCATION, LOGOUT, LOGIN, LOGIN_SUCCESS, LOGIN_ERROR } from './constants'
+import { CHANGE_TAB, TABCHANGE_LOCATION, LOGOUT, REGISTER, REGISTER_SUCCESS, REGISTER_ERROR, LOGIN, LOGIN_SUCCESS, LOGIN_ERROR } from './constants'
 
 export function changeTab(tabLocation) {
     return {
@@ -55,6 +55,27 @@ export function loginSuccess(token) {
 export function loginError(err) {
     return {
         type: LOGIN_ERROR,
+        err,
+    };
+}
+
+export function register(data) {
+    return {
+        type: REGISTER,
+        data,
+    };
+}
+
+
+export function registerSuccess() {
+    return {
+        type: REGISTER_SUCCESS,
+    };
+}
+
+export function registerError(err) {
+    return {
+        type: REGISTER_ERROR,
         err,
     };
 }
