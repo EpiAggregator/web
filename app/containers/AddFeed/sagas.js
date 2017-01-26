@@ -12,11 +12,9 @@ import request from 'utils/request';
 // import { makeSelectUsername } from 'containers/HomePage/selectors';
 
 export function* putAddList(evt) {
-    const requestURL = API_R_ADDFEED;
-    console.log(evt);
     try {
         // Call our request helper (see 'utils/request')
-        const feeds = yield call(request, requestURL, {
+        const feed = yield call(request, API_R_ADDFEED, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -25,6 +23,7 @@ export function* putAddList(evt) {
                 url: evt.url,
             })
         });
+        console.log(feed);
         yield put(addFeedSucces());
     } catch (err) {
         yield put(addFeedError(err));

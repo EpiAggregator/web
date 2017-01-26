@@ -6,8 +6,8 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
-    id: 'app.containers.SettingsPage.header',
-    defaultMessage: 'This is SettingsPage container !',
+  logout: {
+    id: 'app.containers.SettingsPage.logout',
+    defaultMessage: 'Logout',
   },
 });

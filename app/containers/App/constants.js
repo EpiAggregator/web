@@ -11,4 +11,8 @@
 
 export const CHANGE_TAB = 'app/App/CHANGE_TAB';
 export const TABCHANGE_LOCATION = 'app/App/TABCHANGE_LOCATION';
+export const LOGOUT = 'app/App/LOGOUT';
+export const LOGIN = 'app/App/LOGIN';
+export const LOGIN_SUCCESS = 'app/App/LOGIN_SUCCESS';
+export const LOGIN_ERROR = 'app/App/LOGIN_ERROR';
 export const DEFAULT_LOCALE = 'en';

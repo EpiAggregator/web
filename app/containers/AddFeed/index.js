@@ -33,8 +33,9 @@ class AddFeed extends React.Component { // eslint-disable-line react/prefer-stat
     <div>
         <Field component={TextField} name="url" type="text"
             validate={[ validUrl ]}
-            floatingLabelText={<FormattedMessage {...messages.addFeed} />}
-            hintText={<FormattedMessage {...messages.addFeed} />} />
+            floatingLabelText={<FormattedMessage {...messages.addFeed} />} />
+        {/* Render error if any. */}
+        {error && <strong>{error}</strong>}
         <RaisedButton type="submit" disabled={this.props.submitting} label={<FormattedMessage {...messages.submit} />} primary
         />
       </div>

@@ -40,8 +40,7 @@ function homeReducer(state = initialState, action) {
             .set('feedsError', action.error)
             .set('feedsLoading', false);
         default:
-            return state
-            .setIn(['feedsList'], []); // Trick to have an array instead of a List
+            return state;
     }
 }
 

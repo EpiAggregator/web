@@ -6,6 +6,7 @@
 
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
+import Helmet from 'react-helmet';
 import messages from './messages';
 
 import styled from 'styled-components';
@@ -23,6 +24,12 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
   render() {
     let imgStyle = { margin: '30px' };
     return (
+      <section>
+        <Helmet
+        title="AboutPage"
+        meta={[
+            { name: 'description', content: 'About Page' },
+        ]} />
       <StyledDiv>
         <h2>
             <FormattedMessage {...messages.info} />
@@ -53,6 +60,7 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
             </h2>
           </a>
       </StyledDiv>
+      </section>
     );
   }
 }

@@ -15,7 +15,7 @@
  *    }
  */
 
-import { CHANGE_TAB, TABCHANGE_LOCATION } from './constants'
+import { CHANGE_TAB, TABCHANGE_LOCATION, LOGOUT, LOGIN, LOGIN_SUCCESS, LOGIN_ERROR } from './constants'
 
 export function changeTab(tabLocation) {
     return {
@@ -30,3 +30,32 @@ export function changeLocation(tabLocation) {
         tabLocation,
     };
 }
+
+
+export function logout() {
+    return {
+        type: LOGOUT,
+    };
+}
+
+export function login(data) {
+    return {
+        type: LOGIN,
+        data,
+    };
+}
+
+export function loginSuccess(token) {
+    return {
+        type: LOGIN_SUCCESS,
+        token,
+    };
+}
+
+export function loginError(err) {
+    return {
+        type: LOGIN_ERROR,
+        err,
+    };
+}
+

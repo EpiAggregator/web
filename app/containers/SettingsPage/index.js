@@ -12,22 +12,39 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectSettingsPage from './selectors';
 import messages from './messages';
 
+import { logout } from 'containers/App/actions';
+
 import CenterDiv from 'components/CenterDiv';
 
 import LocaleToggle from 'containers/LocaleToggle';
+import RaisedButton from 'material-ui/RaisedButton'
 
 export class SettingsPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <CenterDiv>
-        <LocaleToggle />
-      </CenterDiv>
+    <section>
+        <CenterDiv>
+        <Helmet
+        title="SettingsPage"
+        meta={[
+            { name: 'description', content: 'Settings Page' },
+        ]}
+        />
+        <div>
+        <RaisedButton type="button" onClick={this.props.askLogout} label={<FormattedMessage {...messages.logout} />} secondary
+        />
+        </div>
+        <div>
+          <LocaleToggle />
+        </div>
+    </CenterDiv>
+    </section>
     );
   }
 }
 
 SettingsPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  askLogout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -36,7 +53,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    askLogout: (evt) => dispatch(logout()),
   };
 }
 

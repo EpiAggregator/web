@@ -27,8 +27,14 @@ const makeSelectTabsChooser = () => createSelector(
     (globalState) => globalState.getIn(['tabLocation'])
 );
 
+const makeSelectToken = () => createSelector(
+    selectGlobal,
+    (globalState) => globalState.getIn(['token'])
+);
+
 export {
   selectGlobal,
   makeSelectLocationState,
   makeSelectTabsChooser,
+  makeSelectToken,
 };
