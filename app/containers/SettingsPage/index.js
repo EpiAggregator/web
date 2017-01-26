@@ -31,11 +31,9 @@ export class SettingsPage extends React.Component { // eslint-disable-line react
         ]}
         />
         <div>
-        <RaisedButton type="button" onClick={this.props.askLogout} label={<FormattedMessage {...messages.logout} />} secondary
-        />
-        </div>
-        <div>
           <LocaleToggle />
+          <RaisedButton style={{margin: '10px'}} type="button" onClick={this.props.askLogout} label={<FormattedMessage {...messages.logout} />} secondary
+          />
         </div>
     </CenterDiv>
     </section>

@@ -43,7 +43,7 @@ function* loggedIn(action) {
 }
 
 function* loggedOut(action) {
-    const url = yield put(push("/login")); // GO login
+    const url = yield put(push("/login")); // GO login //doesn't work
 }
 
 // Individual exports for testing

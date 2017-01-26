@@ -1,8 +1,6 @@
 
 function isToken(store) {
-    if (store.getState().get('global').get('token').token)
-        return true;
-    else if (store.getState().get('global').getIn(['token']) && store.getState().get('global').getIn(['token']).getIn(['token']))
+    if (store.getState().get('global').getIn(['token'])  && store.getState().get('global').getIn(['token']).getIn(['token']))
         return true;
     return false;
 }

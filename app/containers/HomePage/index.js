@@ -12,8 +12,13 @@ import { createStructuredSelector } from 'reselect';
 import { makeSelectFeedsList, makeSelectFeedsLoading, makeSelectFeedsError } from './selectors';
 import { loadFeedsList } from './actions';
 
+import RaisedButton from 'material-ui/RaisedButton'
+
 import CenterDiv from 'components/CenterDiv';
 import FeedsList from 'components/FeedsList';
+
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 import AddFeed from 'containers/AddFeed';
 
@@ -44,6 +49,12 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <CenterDiv>
           <AddFeed />
         </CenterDiv>
+        <div>
+        <RaisedButton type="button" label={<FormattedMessage {...messages.allFeeds} />} primary />
+        </div>
+        <div>
+        <RaisedButton type="button" label={<FormattedMessage {...messages.favorites} />} secondary />
+        </div>
         <FeedsList {...feedsListProps} />
         </div>
       </article>

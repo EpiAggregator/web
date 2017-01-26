@@ -9,14 +9,24 @@ import { LOAD_FEEDSLIST } from './constants';
 import { ADD_FEED_SUCCESS } from 'containers/AddFeed/constants';
 import { feedsLoaded, feedsLoadingError } from './actions';
 
+const getToken = (state) => state.get('global').get('token').get('token');
+const getTokenType = (state) => state.get('global').get('token').get('type');
+
 import request from 'utils/request';
 // import { makeSelectUsername } from 'containers/HomePage/selectors';
 
 export function* getFeedsList() {
   const requestURL = API_R_FEEDS;
+  const token = yield select(getToken);
+  const tokenType = yield select(getTokenType);
   try {
-    // Call our request helper (see 'utils/request')
-    const feeds = yield call(request, requestURL);
+      const feeds = yield call(request, requestURL, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': tokenType + ' ' + token,
+          },
+      });
     yield put(feedsLoaded(feeds));
   } catch (err) {
     yield put(feedsLoadingError(err));

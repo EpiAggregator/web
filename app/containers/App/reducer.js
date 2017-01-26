@@ -32,11 +32,12 @@ function appReducer(state = initialState, action) {
     case TABCHANGE_LOCATION:
       return state.set('tabLocation', action.tabLocation);
     case LOGIN_SUCCESS:
-        localStorage.setItem('token', JSON.stringify(action.token));
-        return state.set('token', action.token);
+        let tok = action.token;
+        localStorage.setItem('token', JSON.stringify(tok));
+        return state.set('token', fromJS({ token: tok }));
     case LOGOUT:
         localStorage.setItem('token', JSON.stringify({}));
-        return state.set('token', {});
+        return state.set('token', fromJS({ token: {} }));
     default:
       return state;
   }
