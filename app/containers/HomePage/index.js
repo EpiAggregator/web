@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { makeSelectFeedsList, makeSelectFeedsLoading, makeSelectFeedsError,
-         makeSelectEntriesList, makeSelectEntriesLoading, makeSelectEntriesError
+    makeSelectEntriesList, makeSelectEntriesLoading, makeSelectEntriesError, makeSelectUnReadOnly
 } from './selectors';
 import { loadFeedsList, loadFeedsEntries, favEntry, readEntry, unreadOnly } from './actions';
 
@@ -61,6 +61,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         feedsEntries: entriesList,
         onRead: this.props.onReadEntry,
         onFav: this.props.onFavEntry,
+        unReadOnly: this.props.unReadOnly,
     };
 
     const allEntries = () => this.props.loadEntries('all');
@@ -81,8 +82,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
         <div>
             <RaisedButton type="button" onTouchTap={this.props.onChangeFeed.bind(null, null)} label={<FormattedMessage {...messages.allFeeds} />} primary />
             <Toggle
-            value={true}
-            disabled={true}
+            toggled={this.props.unReadOnly}
             onToggle={this.props.onUnReadOnly}
             label={<FormattedMessage {...messages.unreadOnly} />}
             labelPosition="left"
@@ -121,6 +121,7 @@ const mapStateToProps = createStructuredSelector({
     entriesList: makeSelectEntriesList(),
     entriesLoading: makeSelectEntriesLoading(),
     entriesError: makeSelectEntriesError(),
+    unReadOnly: makeSelectUnReadOnly(),
 });
 
 // Wrap the component to inject dispatch and state into it

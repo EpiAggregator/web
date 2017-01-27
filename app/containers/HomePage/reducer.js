@@ -20,6 +20,7 @@ import {
     LOAD_FEEDSENTRIES_ERROR,
     ENTRY_FAV,
     ENTRY_READ,
+    UNREAD_ONLY,
 } from './constants';
 
 // The initial state of the App
@@ -30,6 +31,7 @@ const initialState = fromJS({
     entriesLoading: true,
     entriesError: false,
     entriesList: [],
+    unReadOnly: false,
 });
 
 function homeReducer(state = initialState, action) {
@@ -66,6 +68,9 @@ function homeReducer(state = initialState, action) {
         case ENTRY_READ:
             return state
             .setIn(['entriesList', action.id, 'read'], true);
+        case UNREAD_ONLY:
+            return state
+            .setIn(['unReadOnly'], !state.getIn(['unReadOnly']));
         default:
             return state;
     }

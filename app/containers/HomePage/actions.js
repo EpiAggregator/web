@@ -104,7 +104,6 @@ export function favEntry(id) {
 }
 
 export function unreadOnly(action) {
-    console.log(action);
     return {
         type: UNREAD_ONLY,
     };

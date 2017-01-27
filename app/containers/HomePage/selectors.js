@@ -36,6 +36,11 @@ const makeSelectEntriesList = () => createSelector(
     (homeState) =>  homeState.getIn(['entriesList']).toJS()
 );
 
+const makeSelectUnReadOnly = () => createSelector(
+    selectHome,
+    (homeState) =>  homeState.getIn(['unReadOnly'])
+);
+
 export {
   selectHome,
   makeSelectFeedsLoading,
@@ -44,4 +49,5 @@ export {
   makeSelectEntriesLoading,
   makeSelectEntriesError,
   makeSelectEntriesList,
+  makeSelectUnReadOnly,
 };

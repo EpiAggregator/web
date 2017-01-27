@@ -85,8 +85,11 @@ class FeedsEntries extends React.Component { // eslint-disable-line react/prefer
         return (
             <div>
             <List>
-            {this.props.feedsEntries.map((feed, i) =>
-                <ListItem key={i} value={i} primaryText={<a href={feed.link}>{feed.title}</a>}
+            {this.props.feedsEntries.map((feed, i) => {
+                if (feed.read && this.props.unReadOnly) {
+                    return ;
+                }
+               return  (<ListItem key={i} value={i} primaryText={<a href={feed.link}>{feed.title}</a>}
                 secondaryText={
                     <div dangerouslySetInnerHTML={{__html: feed.description}}></div>
                 }
@@ -109,7 +112,8 @@ class FeedsEntries extends React.Component { // eslint-disable-line react/prefer
                     </div>
                     </div>
                 }
-                />
+                />);
+                }
             )}
             </List>
             </div>
@@ -126,6 +130,7 @@ FeedsEntries.propTypes = {
     })),
     onRead: React.PropTypes.func.isRequired,
     onFav: React.PropTypes.func.isRequired,
+    unReadOnly: React.PropTypes.bool.isRequired,
 };
 
 export default FeedsEntries;
