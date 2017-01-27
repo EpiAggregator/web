@@ -22,4 +22,16 @@ export default defineMessages({
       id: 'app.containers.FormPage.register',
       defaultMessage: 'Register',
   },
+  loginError: {
+      id: 'app.containers.FormPage.loginError',
+      defaultMessage: 'Log in failed.',
+  },
+  registerError: {
+      id: 'app.containers.FormPage.registerError',
+      defaultMessage: 'Registering failed.',
+  },
+  registerSuccess: {
+      id: 'app.containers.FormPage.registerSuccess',
+      defaultMessage: 'Registering successful!',
+  },
 });

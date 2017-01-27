@@ -19,6 +19,11 @@ import {
     LOAD_FEEDSLIST,
     LOAD_FEEDSLIST_SUCCESS,
     LOAD_FEEDSLIST_ERROR,
+    LOAD_FEEDSENTRIES,
+    LOAD_FEEDSENTRIES_SUCCESS,
+    LOAD_FEEDSENTRIES_ERROR,
+    ENTRY_FAV,
+    ENTRY_READ,
 } from './constants';
 
 /**
@@ -58,5 +63,41 @@ export function feedsLoadingError(error) {
     return {
         type: LOAD_FEEDSLIST_ERROR,
         error,
+    };
+}
+
+
+export function loadFeedsEntries(id) {
+    return {
+        type: LOAD_FEEDSENTRIES,
+        id,
+    };
+}
+
+export function entriesLoaded(entries) {
+    return {
+        type: LOAD_FEEDSENTRIES_SUCCESS,
+        entries,
+    };
+}
+
+export function entriesLoadingError(error) {
+    return {
+        type: LOAD_FEEDSENTRIES_ERROR,
+        error,
+    };
+}
+
+export function readEntry(id) {
+    return {
+        type: ENTRY_READ,
+        id,
+    };
+}
+
+export function favEntry(id) {
+    return {
+        type: ENTRY_FAV,
+        id,
     };
 }

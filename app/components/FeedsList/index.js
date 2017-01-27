@@ -8,6 +8,9 @@ import React from 'react';
 import {List, ListItem} from 'material-ui/List';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
 import Avatar from 'material-ui/Avatar';
+import { transparent } from 'material-ui/styles/colors';
+
+import CenterDiv from 'components/CenterDiv';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -41,7 +44,9 @@ class FeedsList extends React.Component { // eslint-disable-line react/prefer-st
     if (this.props.error)
         return (<div><FormattedMessage {...messages.error} /></div>);
     if (this.props.loading)
-        return (<div style={loadStyle.container}>
+        return (
+            <CenterDiv>
+            <div style={loadStyle.container}>
           <RefreshIndicator
             size={40}
             left={10}
@@ -49,7 +54,9 @@ class FeedsList extends React.Component { // eslint-disable-line react/prefer-st
             status="loading"
             style={loadStyle.refresh}
           />
-        </div>);
+        </div>
+        </CenterDiv>
+        );
     if (this.props.feedsList.length < 1)
       return (<div><FormattedMessage {...messages.emptyList} /></div>);
     let defaultIcon = 'https://perishablepress.com/wp/wp-content/images/2006/feed-collection/feed-icon_orange-128px+.png';
@@ -57,9 +64,11 @@ class FeedsList extends React.Component { // eslint-disable-line react/prefer-st
         <div>
         <List>
             {this.props.feedsList.map((feed, i) =>
-                <ListItem key={i} primaryText={feed.title}
+                <ListItem key={i} value={i} primaryText={feed.title}
+                onTouchTap={this.props.onSelect.bind(this, i)}
                   leftAvatar={
-                      <Avatar src={feed.link ? (getLocation(feed.link).protocol + '//' + getLocation(feed.link).host + '/favicon.ico') : defaultIcon } />
+                      <Avatar src={feed.link ? (getLocation(feed.link).protocol + '//' + getLocation(feed.link).host + '/favicon.ico') : defaultIcon }
+                      backgroundColor={transparent} />
                   }/>
             )}
         </List>
@@ -75,6 +84,7 @@ FeedsList.propTypes = {
         title: React.PropTypes.string,
         description: React.PropTypes.string,
     })),
+    onSelect: React.PropTypes.func.isRequired,
 };
 
 export default FeedsList;

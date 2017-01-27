@@ -15,13 +15,21 @@ import {
     LOAD_FEEDSLIST_SUCCESS,
     LOAD_FEEDSLIST,
     LOAD_FEEDSLIST_ERROR,
+    LOAD_FEEDSENTRIES,
+    LOAD_FEEDSENTRIES_SUCCESS,
+    LOAD_FEEDSENTRIES_ERROR,
+    ENTRY_FAV,
+    ENTRY_READ,
 } from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
-    feedsLoading: false,
+    feedsLoading: true,
     feedsError: false,
     feedsList: [],
+    entriesLoading: true,
+    entriesError: false,
+    entriesList: [],
 });
 
 function homeReducer(state = initialState, action) {
@@ -39,6 +47,25 @@ function homeReducer(state = initialState, action) {
             return state
             .set('feedsError', action.error)
             .set('feedsLoading', false);
+        case LOAD_FEEDSENTRIES:
+            return state
+            .set('entriesLoading', true)
+            .set('entriesError', false)
+            .setIn(['entriesList'], fromJS( [] ));
+        case LOAD_FEEDSENTRIES_SUCCESS:
+            return state
+            .setIn(['entriesList'], fromJS( action.entries))
+            .set('entriesLoading', false);
+        case LOAD_FEEDSENTRIES_ERROR:
+            return state
+            .set('entriesError', action.error)
+            .set('entriesLoading', false);
+        case ENTRY_FAV:
+            return state
+            .setIn(['entriesList', action.id, 'favorite'], !state.getIn(['entriesList', action.id, 'favorite']));
+        case ENTRY_READ:
+            return state
+            .setIn(['entriesList', action.id, 'read'], true);
         default:
             return state;
     }

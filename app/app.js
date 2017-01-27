@@ -72,6 +72,9 @@ openSansObserver.load().then(() => {
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
 const store = configureStore(initialState, browserHistory);
+if (JSON.parse(localStorage.getItem('token')) === null) {
+    localStorage.setItem('token', JSON.stringify({}));
+}
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState

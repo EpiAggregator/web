@@ -21,9 +21,27 @@ const makeSelectFeedsList = () => createSelector(
     (homeState) =>  homeState.getIn(['feedsList']).toJS()
 );
 
+const makeSelectEntriesLoading = () => createSelector(
+    selectHome,
+    (homeState) => homeState.get('entriesLoading')
+);
+
+const makeSelectEntriesError = () => createSelector(
+    selectHome,
+    (homeState) => homeState.get('entriesError')
+);
+
+const makeSelectEntriesList = () => createSelector(
+    selectHome,
+    (homeState) =>  homeState.getIn(['entriesList']).toJS()
+);
+
 export {
   selectHome,
   makeSelectFeedsLoading,
   makeSelectFeedsError,
   makeSelectFeedsList,
+  makeSelectEntriesLoading,
+  makeSelectEntriesError,
+  makeSelectEntriesList,
 };

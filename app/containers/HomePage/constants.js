@@ -12,3 +12,10 @@
 export const LOAD_FEEDSLIST = 'epiaggregator/HomePage/LOAD_FEEDSLIST';
 export const LOAD_FEEDSLIST_SUCCESS = 'epiaggregator/HomePage/LOAD_FEEDSLIST_SUCCESS';
 export const LOAD_FEEDSLIST_ERROR = 'epiaggregator/HomePage/LOAD_FEEDSLIST_ERROR';
+
+export const LOAD_FEEDSENTRIES = 'epiaggregator/HomePage/LOAD_FEEDSENTRIES';
+export const LOAD_FEEDSENTRIES_SUCCESS = 'epiaggregator/HomePage/LOAD_FEEDSENTRIES_SUCCESS';
+export const LOAD_FEEDSENTRIES_ERROR = 'epiaggregator/HomePage/LOAD_FEEDSENTRIES_ERROR';
+
+export const ENTRY_FAV = 'epiaggregator/HomePage/ENTRY_FAV';
+export const ENTRY_READ = 'epiaggregator/HomePage/ENTRY_READ';

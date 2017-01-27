@@ -27,6 +27,21 @@ const makeSelectTabsChooser = () => createSelector(
     (globalState) => globalState.getIn(['tabLocation'])
 );
 
+const makeSelectLoginError = () => createSelector(
+    selectGlobal,
+    (globalState) => globalState.getIn(['loginError'])
+);
+
+const makeSelectRegisterSuccess = () => createSelector(
+    selectGlobal,
+    (globalState) => globalState.getIn(['registerSuccess'])
+);
+
+const makeSelectRegisterError = () => createSelector(
+    selectGlobal,
+    (globalState) => globalState.getIn(['registerError'])
+);
+
 const makeSelectToken = () => createSelector(
     selectGlobal,
     (globalState) => { return JSON.parse(localStorage.getItem('token')); }
@@ -37,4 +52,7 @@ export {
   makeSelectLocationState,
   makeSelectTabsChooser,
   makeSelectToken,
+  makeSelectLoginError,
+  makeSelectRegisterSuccess,
+  makeSelectRegisterError,
 };

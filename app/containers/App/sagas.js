@@ -63,7 +63,6 @@ function* loggedIn(action) {
 
 function* loggedOut(action) {
     const url = yield put(push("/login")); // GO login //doesn't work
-    window.location.reload();
 }
 
 // Individual exports for testing

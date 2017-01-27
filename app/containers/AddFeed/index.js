@@ -16,6 +16,7 @@ import messages from './messages';
 import { makeSelectAddFeedLoading, makeSelectAddFeedError } from './selectors';
 import { addFeed } from './actions';
 
+import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton'
 
 function ValidURL(str) {
@@ -29,18 +30,23 @@ class AddFeed extends React.Component { // eslint-disable-line react/prefer-stat
   render() {
     const { handleSubmit, onAddFeed, loading, error } = this.props;
     return (
-    <form onSubmit={handleSubmit(onAddFeed)} >
     <div>
+    <form onSubmit={handleSubmit(onAddFeed)} >
+    <div style={{width: '460px'}}>
         <Field component={TextField} name="url" type="text"
             validate={[ validUrl ]}
             floatingLabelText={<FormattedMessage {...messages.addFeed} />} />
-        {/* Render error if any. */}
-        {error && <strong>{error}</strong>}
         <RaisedButton type="submit" disabled={this.props.submitting} label={<FormattedMessage {...messages.submit} />} primary
         />
       </div>
     </form>
+    </div>
     );
+//     <Snackbar
+//         open={error}
+//         message={<FormattedMessage {...messages.error} />}
+//         autoHideDuration={4000}
+//     />
   }
 }
 

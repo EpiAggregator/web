@@ -22,4 +22,8 @@ export default defineMessages({
       id: 'app.components.AddFeed.invalidUrl',
       defaultMessage: 'Invalid Url',
   },
+  error: {
+      id: 'app.components.AddFeed.error',
+      defaultMessage: 'Error adding feed.',
+  },
 });
