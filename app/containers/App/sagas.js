@@ -39,20 +39,25 @@ function* initiateLogin(action) {
 }
 
 function* initiateRegister(action) {
+    let infos = JSON.stringify({
+        email: action.data.get('email'),
+                               password: action.data.get('password'),
+    });
     try {
         const token = yield call(request, API_R_USER, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                email: action.data.get('email'),
-                password: action.data.get('password'),
-            })
+            body: infos,
         });
         yield put(registerSuccess());
     } catch (err) {
-        yield put(registerError(err));
+        if (err === 'SyntaxError: Unexpected end of JSON input') {
+            yield put(registerError(err));
+        } else {
+            yield put(registerSuccess());
+        }
     }
 
 }
