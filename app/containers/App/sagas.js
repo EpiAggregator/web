@@ -53,7 +53,7 @@ function* initiateRegister(action) {
         });
         yield put(registerSuccess());
     } catch (err) {
-        if (err === 'SyntaxError: Unexpected end of JSON input') {
+        if (err.name !== 'SyntaxError') {
             yield put(registerError(err));
         } else {
             yield put(registerSuccess());
