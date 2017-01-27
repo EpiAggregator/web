@@ -24,6 +24,7 @@ import {
     LOAD_FEEDSENTRIES_ERROR,
     ENTRY_FAV,
     ENTRY_READ,
+    UNREAD_ONLY,
 } from './constants';
 
 /**
@@ -101,3 +102,11 @@ export function favEntry(id) {
         id,
     };
 }
+
+export function unreadOnly(action) {
+    console.log(action);
+    return {
+        type: UNREAD_ONLY,
+    };
+}
+

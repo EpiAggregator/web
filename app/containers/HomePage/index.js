@@ -12,9 +12,10 @@ import { createStructuredSelector } from 'reselect';
 import { makeSelectFeedsList, makeSelectFeedsLoading, makeSelectFeedsError,
          makeSelectEntriesList, makeSelectEntriesLoading, makeSelectEntriesError
 } from './selectors';
-import { loadFeedsList, loadFeedsEntries, favEntry, readEntry } from './actions';
+import { loadFeedsList, loadFeedsEntries, favEntry, readEntry, unreadOnly } from './actions';
 
 import RaisedButton from 'material-ui/RaisedButton'
+import Toggle from 'material-ui/Toggle';
 
 import CenterDiv from 'components/CenterDiv';
 import AddFeed from 'containers/AddFeed';
@@ -77,9 +78,16 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           <AddFeed />
         </CenterDiv>
         <StyleBlockLeft>
-        <CenterDiv>
-        <RaisedButton type="button" onTouchTap={this.props.onChangeFeed.bind(null, null)} label={<FormattedMessage {...messages.allFeeds} />} primary />
-        </CenterDiv>
+        <div>
+            <RaisedButton type="button" onTouchTap={this.props.onChangeFeed.bind(null, null)} label={<FormattedMessage {...messages.allFeeds} />} primary />
+            <Toggle
+            value={true}
+            disabled={true}
+            onToggle={this.props.onUnReadOnly}
+            label={<FormattedMessage {...messages.unreadOnly} />}
+            labelPosition="left"
+            />
+        </div>
            <FeedsList {...feedsListProps} />
         </StyleBlockLeft>
         </div>
@@ -102,6 +110,7 @@ export function mapDispatchToProps(dispatch) {
       onChangeEntry: (id) => dispatch(loadFeedsEntries(id)),
       onReadEntry: (id) => dispatch(readEntry(id)),
       onFavEntry: (id) => dispatch(favEntry(id)),
+      onUnReadOnly: (evt) => dispatch(unreadOnly(evt)),
     };
 }
 

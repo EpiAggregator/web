@@ -19,3 +19,5 @@ export const LOAD_FEEDSENTRIES_ERROR = 'epiaggregator/HomePage/LOAD_FEEDSENTRIES
 
 export const ENTRY_FAV = 'epiaggregator/HomePage/ENTRY_FAV';
 export const ENTRY_READ = 'epiaggregator/HomePage/ENTRY_READ';
+
+export const UNREAD_ONLY = 'epiaggregator/HomePage/UNREAD_ONLY';

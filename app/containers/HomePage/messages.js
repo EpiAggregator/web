@@ -14,4 +14,8 @@ export default defineMessages({
       id: 'epiaggregator.containers.HomePage.favorites',
       defaultMessage: 'Favorites',
   },
+  unreadOnly: {
+      id: 'epiaggregator.containers.HomePage.unreadOnly',
+      defaultMessage: 'Unread only',
+  },
 });

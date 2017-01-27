@@ -15,7 +15,7 @@ import request from 'utils/request';
 // import { makeSelectUsername } from 'containers/HomePage/selectors';
 
 function* updateFeedlist() {
-    yield call(delay, 5000);
+    yield call(delay, 500);
     yield put(addFeedSucces());
 }
 
